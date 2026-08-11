@@ -7,16 +7,16 @@ local env = {
     "-I$(shell luarocks show santoku --rock-dir)/include/",
   },
   dependencies = {
-    "lua >= 5.1",
-    "santoku >= 0.0.324-1",
-    "santoku-sqlite >= 0.0.35-1",
-    "santoku-sqlite-migrate >= 0.0.19-1",
+    "lua == 5.1",
+    "santoku >= 1.0.0, < 2.0.0",
+    "santoku-sqlite >= 1.0.0, < 2.0.0",
+    "santoku-sqlite-migrate >= 1.0.0, < 2.0.0",
     "lsqlite3 >= 0.9.6-1",
     "argparse >= 0.7.1-1",
   },
   test = {
     dependencies = {
-      "santoku-fs >= 0.0.43-1",
+      "santoku-fs >= 1.0.0, < 2.0.0",
     },
   },
 }
