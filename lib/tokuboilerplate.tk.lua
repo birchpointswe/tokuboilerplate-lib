@@ -8,7 +8,7 @@
   t_migrations = serialize(migrations, true)
 %>
 
-local lsqlite3 = require("lsqlite3")
+local sqlite_db = require("santoku.sqlite.db")
 local sqlite = require("santoku.sqlite")
 local sqlite_migrate = require("santoku.sqlite.migrate")
 local capi = require("tokuboilerplate.capi")
@@ -19,7 +19,7 @@ return function (db_file)
   end
 
   local M = {}
-  local db = sqlite(lsqlite3.open(db_file))
+  local db = sqlite(sqlite_db.open(db_file))
 
   db.exec("pragma journal_mode = WAL")
   db.exec("pragma synchronous = NORMAL")
