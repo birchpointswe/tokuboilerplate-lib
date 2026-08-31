@@ -55,13 +55,20 @@ return function (db_file)
   end
 
   function M.delete(id)
+    if not get_number(id) then
+      return false
+    end
     delete_number(id)
+    return true
   end
 
   function M.update(id)
+    if not get_number(id) then
+      return false
+    end
     local value = capi.random()
     update_number(value, id)
-    return value
+    return true, value
   end
 
   function M.list()
