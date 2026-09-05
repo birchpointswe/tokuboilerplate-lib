@@ -1,6 +1,7 @@
 #!/usr/bin/env lua
 
 local argparse = require("argparse")
+local str = require("santoku.string")
 local db_mod = require("tokuboilerplate")
 
 local parser = argparse()
@@ -28,21 +29,21 @@ local db = db_mod(args.sqlite)
 if args["add"] then
   local id = db.add()
   local row = db.get(id)
-  print(string.format("Added: id=%d value=%d", row.id, row.value))
+  print(str.format("Added: id=%d value=%d", row.id, row.value))
 
 elseif args["delete"] then
   if db.delete(args.id) then
-    print(string.format("Deleted: id=%d", args.id))
+    print(str.format("Deleted: id=%d", args.id))
   else
-    print(string.format("Not found: id=%d", args.id))
+    print(str.format("Not found: id=%d", args.id))
   end
 
 elseif args["update"] then
   local ok, value = db.update(args.id)
   if ok then
-    print(string.format("Updated: id=%d value=%d", args.id, value))
+    print(str.format("Updated: id=%d value=%d", args.id, value))
   else
-    print(string.format("Not found: id=%d", args.id))
+    print(str.format("Not found: id=%d", args.id))
   end
 
 elseif args["list"] then
@@ -51,7 +52,7 @@ elseif args["list"] then
     print("No numbers in database")
   else
     for _, row in ipairs(numbers) do
-      print(string.format("id=%d value=%d", row.id, row.value))
+      print(str.format("id=%d value=%d", row.id, row.value))
     end
   end
 end

@@ -3,7 +3,7 @@ local fs = require("santoku.fs")
 
 test("tokuboilerplate", function()
 
-  local db_file = os.tmpname()
+  local db_file = fs.tmpname()
   local db_mod = require("tokuboilerplate")
   local db = db_mod(db_file)
 
